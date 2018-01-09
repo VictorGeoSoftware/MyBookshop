@@ -43,7 +43,7 @@ class BookListAdapter(private val bookList: ArrayList<Book>, private val booksAd
             txtTitle.text = book.volumeInfo.title
 
             val price:String = if (book.saleInfo.saleability.contentEquals(MyConstants.FOR_SALE)) {
-                "${book.saleInfo.listPrice.amount} ${book.saleInfo.listPrice.currencyCode}"
+                "${book.saleInfo.listPrice!!.amount} ${book.saleInfo.listPrice.currencyCode}"
             } else {
                 context.getString(R.string.free)
             }

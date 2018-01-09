@@ -1,5 +1,6 @@
 package com.victor.test.mybookshop.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.GridLayoutManager
@@ -10,6 +11,7 @@ import com.victor.test.mybookshop.ParentActivity
 import com.victor.test.mybookshop.R
 import com.victor.test.mybookshop.app
 import com.victor.test.mybookshop.data.Book
+import com.victor.test.mybookshop.data.MyConstants
 import com.victor.test.mybookshop.di.mainactivity.MainActivityModule
 import com.victor.test.mybookshop.presenter.BooksPresenter
 import com.victor.test.mybookshop.presenter.BooksView
@@ -17,6 +19,7 @@ import com.victor.test.mybookshop.ui.adapters.BookListAdapter
 import com.victor.test.mybookshop.ui.adapters.SpaceDecorator
 import com.victor.test.mybookshop.utils.MyUtils
 import com.victor.test.mybookshop.utils.coroutine
+import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.experimental.runBlocking
 import javax.inject.Inject
@@ -54,7 +57,7 @@ class MainActivity : ParentActivity(), BooksView, BookListAdapter.BookAdapterLis
                 val nextIndex =  bookListAdapter.itemCount
 
                 if (myGridLayoutManager.findLastCompletelyVisibleItemPosition() == nextIndex - 1) {
-                    // TODO :: investigar como llamar bien al updateBookList
+                    Handler().postDelayed({ runBlocking { updateBookList(nextIndex) } }, 500)
                 }
             }
         })
@@ -87,8 +90,10 @@ class MainActivity : ParentActivity(), BooksView, BookListAdapter.BookAdapterLis
     // ----------------------------------------------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------ BOOKS ADAPTER LISTENER ----------------------------------------------------------
     override fun onBookSelected(book: Book) {
-        // TODO :: load new DetailActivity
         // TODO :: integrate transitions between activities
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(MyConstants.BOOK, book)
+        startActivity(intent)
     }
 
 

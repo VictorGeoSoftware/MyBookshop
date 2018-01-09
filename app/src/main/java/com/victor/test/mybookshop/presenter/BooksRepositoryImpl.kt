@@ -39,10 +39,12 @@ class BooksRepositoryImpl:BooksRepository {
         params.put("startIndex", nextIndex.toString())
 
         val call: Call<BookResponse> = bookRequest.getCharacterComics(params)
+        Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - call :: " + call)
 
         return try {
             val response: Response<BookResponse> = call.execute()
-//            Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - response :: " + response.body())
+            Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - response :: " + response)
+            Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - response :: " + call.request()?.url())
 
             if (response.isSuccessful && response.body() != null) {
 

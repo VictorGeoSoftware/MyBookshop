@@ -8,5 +8,6 @@ class MyConstants {
     companion object {
         val FOR_SALE = "FOR_SALE"
         val NOT_FOR_SALE = "NOT_FOR_SALE"
+        val BOOK = "BOOK"
     }
 }

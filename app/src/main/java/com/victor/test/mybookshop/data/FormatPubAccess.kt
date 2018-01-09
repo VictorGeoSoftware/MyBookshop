@@ -1,7 +1,14 @@
 package com.victor.test.mybookshop.data
 
+import android.annotation.SuppressLint
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * Created by victorpalmacarrasco on 7/1/18.
  * ${APP_NAME}
  */
-data class FormatPubAccess(val isAvailable:Boolean, val acsTokenLink:String)
+
+@SuppressLint("ParcelCreator")
+@Parcelize
+data class FormatPubAccess(val isAvailable:Boolean?, val acsTokenLink:String?) : Parcelable
