@@ -1,6 +1,5 @@
 package com.victor.test.mybookshop.ui.adapters
 
-import android.provider.SyncStateContract
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
@@ -42,7 +41,7 @@ class BookListAdapter(private val bookList: ArrayList<Book>, private val booksAd
             Picasso.with(context).load(book.volumeInfo.imageLinks?.smallThumbnail).into(imgBookTape)
             txtTitle.text = book.volumeInfo.title
 
-            val price:String = if (book.saleInfo.saleability.contentEquals(MyConstants.FOR_SALE)) {
+            val price: kotlin.String = if (book.saleInfo.saleability.contentEquals(MyConstants.FOR_SALE)) {
                 "${book.saleInfo.listPrice!!.amount} ${book.saleInfo.listPrice.currencyCode}"
             } else {
                 context.getString(R.string.free)

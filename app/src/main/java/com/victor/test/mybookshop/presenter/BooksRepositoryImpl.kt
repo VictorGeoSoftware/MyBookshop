@@ -31,9 +31,9 @@ class BooksRepositoryImpl:BooksRepository {
     }
 
 
-    override fun getBookList(letter:String, nextIndex:Int): Pair<ArrayList<Book>?, String?> {
+    override fun getBookList(letter: kotlin.String, nextIndex:Int): Pair<ArrayList<Book>?, kotlin.String?> {
 
-        val params = HashMap<String, String>()
+        val params = HashMap<kotlin.String, kotlin.String>()
         params.put("key", BuildConfig.API_KEY)
         params.put("q", letter)
         params.put("startIndex", nextIndex.toString())

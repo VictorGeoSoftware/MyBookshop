@@ -2,12 +2,13 @@ package com.victor.test.mybookshop.data
 
 import android.os.Parcel
 import android.os.Parcelable
+import kotlin.String
 
 /**
  * Created by victorpalmacarrasco on 7/1/18.
  * ${APP_NAME}
  */
-data class ImageLinks(val smallThumbnail:String, val thumbnail:String): Parcelable {
+data class ImageLinks(val smallThumbnail: String, val thumbnail: String): Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString()) {

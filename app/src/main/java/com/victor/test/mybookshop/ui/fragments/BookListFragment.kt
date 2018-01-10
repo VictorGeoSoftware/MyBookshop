@@ -6,6 +6,7 @@ import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,11 +33,11 @@ class BookListFragment: Fragment(), BooksView, BookListAdapter.BookAdapterListen
     @Inject lateinit var booksPresenter: BooksPresenter
     private lateinit var bookListAdapter: BookListAdapter
     private val bookArrayList: ArrayList<Book> = ArrayList()
-    private lateinit var fragmentLetter:String
+    private lateinit var fragmentLetter: kotlin.String
 
 
     companion object {
-        fun newInstance(letter:String): BookListFragment {
+        fun newInstance(letter: kotlin.String): BookListFragment {
             val args = Bundle()
             args.putString(MyConstants.LETTER, letter)
 
@@ -85,10 +86,13 @@ class BookListFragment: Fragment(), BooksView, BookListAdapter.BookAdapterListen
     // ----------------------------------------------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------ BOOKS VIEW INTERFACE ------------------------------------------------------------
     override fun showProgressBar() {
+        Log.i("MyBookshop", "BookListFragment - showProgressBar!")
         progressBar.visibility = View.VISIBLE
+
     }
 
     override fun hideProgressBar() {
+        Log.i("MyBookshop", "BookListFragment - hideProgressBar!")
         progressBar.visibility = View.INVISIBLE
     }
 

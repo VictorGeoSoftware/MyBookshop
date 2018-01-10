@@ -3,6 +3,7 @@ package com.victor.test.mybookshop.data
 import android.annotation.SuppressLint
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import kotlin.String
 
 /**
  * Created by victorpalmacarrasco on 7/1/18.
@@ -12,9 +13,9 @@ import kotlinx.android.parcel.Parcelize
 @SuppressLint("ParcelCreator")
 @Parcelize
 class SaleInfo(val country: String,
-                    val saleability: String,
-                    val isEbook: Boolean,
-                    val listPrice: Price?,
-                    val retailPrice: Price?,
-                    val buyLink: String?,
-                    val offers: ArrayList<Offer>?) : Parcelable
+               val saleability: String,
+               val isEbook: Boolean,
+               val listPrice: Price?,
+               val retailPrice: Price?,
+               val buyLink: String?,
+               val offers: ArrayList<Offer>?) : Parcelable

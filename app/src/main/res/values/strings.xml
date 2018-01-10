@@ -3,4 +3,6 @@
     <string name="free">For free</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="unavailable">Unavailable</string>
+    <string name="further_info">Further information</string>
+    <string name="no_info_available">Sorry, there is no more information available</string>
 </resources>

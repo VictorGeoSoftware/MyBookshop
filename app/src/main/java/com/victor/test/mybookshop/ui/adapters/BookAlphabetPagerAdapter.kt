@@ -10,6 +10,7 @@ import com.victor.test.mybookshop.ui.fragments.BookListFragment
  * Created by victorpalmacarrasco on 10/1/18.
  * ${APP_NAME}
  */
+
 class BookAlphabetPagerAdapter(fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager) {
 
     private val fragments = LinkedHashMap<BookListFragment, String>()

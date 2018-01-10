@@ -1,8 +1,6 @@
 package com.victor.test.mybookshop.presenter
 
-import android.util.Log
 import com.victor.test.mybookshop.data.Book
-import com.victor.test.mybookshop.utils.MyUtils
 import com.victor.test.mybookshop.utils.coroutine
 
 /**
@@ -19,14 +17,14 @@ class BooksPresenterImpl:BooksPresenter, BooksRepository.RequestListener {
         this.booksView = booksView
     }
 
-    override suspend fun getBookList(letter:String, nextIndex:Int) {
+    override suspend fun getBookList(letter: String, nextIndex:Int) {
         booksView?.showProgressBar()
 
         coroutine {
             booksRepository.getBookList(letter, nextIndex)
         }.await().let { result ->
-            booksView?.hideProgressBar()
             booksView?.showReceivedBookList(result.first)
+            booksView?.hideProgressBar()
         }
     }
 

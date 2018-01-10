@@ -19,5 +19,7 @@ class MyConstants {
                 "q", "r", "s", "t",
                 "u", "v", "x", "y", "z")
 
+
+        val FRAGMENT_BOOK_LIST = "FRAGMENT_BOOK_LIST"
     }
 }
