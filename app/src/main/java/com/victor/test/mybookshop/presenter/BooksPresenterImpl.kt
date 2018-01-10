@@ -19,11 +19,11 @@ class BooksPresenterImpl:BooksPresenter, BooksRepository.RequestListener {
         this.booksView = booksView
     }
 
-    override suspend fun getBookList(nextIndex:Int) {
+    override suspend fun getBookList(letter:String, nextIndex:Int) {
         booksView?.showProgressBar()
 
         coroutine {
-            booksRepository.getBookList(nextIndex)
+            booksRepository.getBookList(letter, nextIndex)
         }.await().let { result ->
             booksView?.hideProgressBar()
             booksView?.showReceivedBookList(result.first)

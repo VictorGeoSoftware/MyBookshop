@@ -9,5 +9,15 @@ class MyConstants {
         val FOR_SALE = "FOR_SALE"
         val NOT_FOR_SALE = "NOT_FOR_SALE"
         val BOOK = "BOOK"
+        val LETTER = "LETTER"
+
+        val alphabetArrayList = arrayListOf(
+                "a", "b", "c", "d",
+                "e", "f", "g", "h",
+                "i", "j", "k", "l",
+                "m", "n", "o", "p",
+                "q", "r", "s", "t",
+                "u", "v", "x", "y", "z")
+
     }
 }

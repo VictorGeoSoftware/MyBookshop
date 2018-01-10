@@ -7,7 +7,7 @@ import com.victor.test.mybookshop.data.Book
  * ${APP_NAME}
  */
 interface BooksRepository {
-    fun getBookList(nextIndex:Int): Pair<ArrayList<Book>?, String?>
+    fun getBookList(letter:String, nextIndex:Int): Pair<ArrayList<Book>?, String?>
 
     interface RequestListener {
         fun onBookListReceived(bookList: ArrayList<Book>)

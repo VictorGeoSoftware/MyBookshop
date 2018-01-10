@@ -6,6 +6,6 @@ package com.victor.test.mybookshop.presenter
  */
 interface BooksPresenter {
     fun setView(booksView: BooksView)
-    suspend fun getBookList(nextIndex:Int)
+    suspend fun getBookList(letter:String, nextIndex:Int)
     fun onDestroy()
 }

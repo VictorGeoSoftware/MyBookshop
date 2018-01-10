@@ -39,7 +39,7 @@ class BookListAdapter(private val bookList: ArrayList<Book>, private val booksAd
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(book: Book, listener: BookAdapterListener) = with(itemView) {
 
-            Picasso.with(context).load(book.volumeInfo.imageLinks.smallThumbnail).into(imgBookTape)
+            Picasso.with(context).load(book.volumeInfo.imageLinks?.smallThumbnail).into(imgBookTape)
             txtTitle.text = book.volumeInfo.title
 
             val price:String = if (book.saleInfo.saleability.contentEquals(MyConstants.FOR_SALE)) {

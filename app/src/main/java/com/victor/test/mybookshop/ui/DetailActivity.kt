@@ -20,7 +20,7 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val bookToShow = intent.getParcelableExtra(MyConstants.BOOK) as Book
-        Picasso.with(this).load(bookToShow.volumeInfo.imageLinks.thumbnail).into(imgTape)
+        Picasso.with(this).load(bookToShow.volumeInfo.imageLinks?.thumbnail).into(imgTape)
         txtDescription.text = bookToShow.volumeInfo.description
 
         val price:String = if (bookToShow.saleInfo.saleability.contentEquals(MyConstants.FOR_SALE)) {

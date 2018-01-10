@@ -31,11 +31,11 @@ class BooksRepositoryImpl:BooksRepository {
     }
 
 
-    override fun getBookList(nextIndex:Int): Pair<ArrayList<Book>?, String?> {
+    override fun getBookList(letter:String, nextIndex:Int): Pair<ArrayList<Book>?, String?> {
 
         val params = HashMap<String, String>()
         params.put("key", BuildConfig.API_KEY)
-        params.put("q", "a")
+        params.put("q", letter)
         params.put("startIndex", nextIndex.toString())
 
         val call: Call<BookResponse> = bookRequest.getCharacterComics(params)
