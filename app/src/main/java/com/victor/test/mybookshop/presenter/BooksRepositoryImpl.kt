@@ -1,17 +1,15 @@
 package com.victor.test.mybookshop.presenter
 
-import android.util.Log
 import com.google.gson.JsonSyntaxException
 import com.victor.test.mybookshop.BuildConfig
 import com.victor.test.mybookshop.data.Book
 import com.victor.test.mybookshop.data.BookResponse
-import com.victor.test.mybookshop.di.DaggerRepositoryComponent
-import com.victor.test.mybookshop.di.RepositoryComponent
-import com.victor.test.mybookshop.di.RepositoryModule
 import com.victor.test.mybookshop.network.BookRequest
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Response
-import javax.inject.Inject
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Created by victorpalmacarrasco on 7/1/18.
@@ -19,16 +17,16 @@ import javax.inject.Inject
  */
 class BooksRepositoryImpl:BooksRepository {
 
-    @Inject lateinit var bookRequest:BookRequest
+//    @Inject lateinit var bookRequest:BookRequest
 
-    private val component: RepositoryComponent by lazy {
-        DaggerRepositoryComponent.builder().repositoryModule(RepositoryModule(this)).build()
-    }
+//    private val component: RepositoryComponent by lazy {
+//        DaggerRepositoryComponent.builder().repositoryModule(RepositoryModule(this)).build()
+//    }
 
 
-    init {
-        component.inject(this)
-    }
+//    init {
+//        component.inject(this)
+//    }
 
 
     override fun getBookList(letter: kotlin.String, nextIndex:Int): Pair<ArrayList<Book>?, kotlin.String?> {
@@ -38,13 +36,26 @@ class BooksRepositoryImpl:BooksRepository {
         params.put("q", letter)
         params.put("startIndex", nextIndex.toString())
 
-        val call: Call<BookResponse> = bookRequest.getCharacterComics(params)
-        Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - call :: " + call)
+
+        val builder: OkHttpClient.Builder = OkHttpClient.Builder()
+//        if (BuildConfig.DEBUG)
+//            builder.addInterceptor(LogJsonInterceptor())
+
+        val retrofit: Retrofit = Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build()
+
+
+//        val call: Call<BookResponse> = bookRequest.getCharacterComics(params)
+//        Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - call :: " + call)
+        val call: Call<BookResponse> = retrofit.create(BookRequest::class.java).getCharacterComics(params)
 
         return try {
             val response: Response<BookResponse> = call.execute()
-            Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - response :: " + response)
-            Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - response :: " + call.request()?.url())
+//            Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - response :: " + response)
+//            Log.i("MyBookshop", "BooksRepositoryImpl - getBookList - response :: " + call.request()?.url())
 
             if (response.isSuccessful && response.body() != null) {
 

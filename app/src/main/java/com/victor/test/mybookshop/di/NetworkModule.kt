@@ -56,6 +56,6 @@ class NetworkModule {
     // -------------------------------------------------------------------- WEB SERVICES --------------------------------------------------------------------
     @Provides
     @Singleton
-    fun provideMarvelRequest(retrofit: Retrofit) = retrofit.create(BookRequest::class.java)
+    fun provideBookRequest(retrofit: Retrofit) = retrofit.create(BookRequest::class.java)
 }
 

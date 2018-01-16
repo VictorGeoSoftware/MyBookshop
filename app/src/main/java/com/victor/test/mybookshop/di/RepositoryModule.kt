@@ -1,9 +1,5 @@
 package com.victor.test.mybookshop.di
 
-import android.content.Context
-import com.victor.test.mybookshop.presenter.BooksPresenter
-import com.victor.test.mybookshop.presenter.BooksPresenterImpl
-import com.victor.test.mybookshop.presenter.BooksRepository
 import com.victor.test.mybookshop.presenter.BooksRepositoryImpl
 import dagger.Module
 import dagger.Provides
@@ -15,9 +11,9 @@ import javax.inject.Singleton
  */
 
 @Module
-class RepositoryModule(private val booksRepositoryImpl: BooksRepositoryImpl) {
+class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideRepository():BooksRepository = booksRepositoryImpl
+    fun provideRepository():BooksRepositoryImpl = BooksRepositoryImpl()
 }
